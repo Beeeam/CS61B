@@ -5,6 +5,7 @@ public class dog {
     public dog(int w){
         weight = w;
     }
+    ///**non-static method a.k.a instance method so we do not claim static */    
     public void makenoise(){
         if (weight < 10){
             System.out.println("yipyip");
@@ -21,8 +22,11 @@ public class dog {
 }
 public class doglaucher {
     public static void main(String[] args){
+        ///**declaration */
         dog smalldog;
+        ///**instantiation */
         new dog(20);
+        ///**instantiation and assignment */
         smalldog = new dog(20);
         dog hugedog = new dog(150);
         smalldog.makenoise();
