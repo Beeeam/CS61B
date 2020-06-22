@@ -8,22 +8,30 @@ public class SLList{
             next = n;
         }
     }
-    private IntNode first;
+    private IntNode sentinel;
     private int size;
-
+    
+    //**做一个空的list，item是随意的，目的是需要有一个dummy node只有地址指向数列的第一项*/
+    public SLList(){
+        sentinel = new IntNode(23,null);
+        size = 0;
+    }
+    
+    //**dummy node sentinel的下一项才是数列的第一项*/
     public SLList(int x){
-        first = new IntNode(x,null);
+        sentinel = new IntNode(23,null);
+        sentinel.next = new IntNode(x,null);
         size = 1;
     }
 
     public void addFirst(int x){
-        first = new IntNode(x, first);
+        sentinel.next = new IntNode(x, first);
         size += 1;
     }
 
     public void addLast(int x){
         size += 1;
-        IntNode p = first;
+        IntNode p = sentinel;
         while(p.next!= null){
             p = p.next;
         }
@@ -45,7 +53,7 @@ public class SLList{
     }
     
     public int getFirst(){
-        return first.item;
+        return sentinel.next.item;
     }
     
     public static void main(String[] args){
