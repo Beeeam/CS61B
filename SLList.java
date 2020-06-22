@@ -35,10 +35,12 @@ public class SLList{
 
     public int size(){
         return size(first);    
-        
+    }
+    
     public int getFirst(){
         return first.item;
     }
+    
     public static void main(String[] args){
         SLList L = new SLList(10);
         L.addFirst(15);
