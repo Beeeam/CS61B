@@ -16,15 +16,16 @@ public class LinkedListDeque<T> {
 
 
    
-    public LinkedListDeque(T item){
+    public LinkedListDeque(){
         Node head = new Node<T>(null, null, null);
         head.prev = head;
         head.next = head;
         sentinel = head;
-        Node first = new Node<T>(sentinel, item, sentinel);
-        sentinel.next = first;
-        sentinel.prev = first;
-        size = 1;
+        // Node first = new Node<T>(sentinel, item, sentinel);
+        // sentinel.next = first;
+        // sentinel.prev = first;
+        // size = 1;
+        size = 0;
     }
     
 
@@ -37,20 +38,23 @@ public class LinkedListDeque<T> {
     }
 
     public void addFirst(T item){
-        size = size+1;
         Node newNode = new Node<T>(null, item, null);
         newNode.prev = sentinel;
-        newNode.next = sentinel.next;
+        if (size == 0){            
+            newNode.next = sentinel;            
+            sentinel.prev = newNode;
+        }else{newNode.next = sentinel.next;}
         sentinel.next = newNode;
+        size = size+1;
     }
 
     public void addLast(T item){
-        size = size+1;
         Node newNode = new Node<T>(null, item, null);
         newNode.prev = sentinel.prev;
         sentinel.prev.next = newNode;
         newNode.next = sentinel;
         sentinel.prev = newNode;
+        size = size+1;
     }
 
     public void printDeque(){
@@ -98,7 +102,7 @@ public class LinkedListDeque<T> {
     }
 
     public static void main(String[] args){
-        LinkedListDeque L = new LinkedListDeque(1);
+        LinkedListDeque L = new LinkedListDeque();
         L.addFirst(15);
         L.addLast(5);
         L.addFirst(11);
